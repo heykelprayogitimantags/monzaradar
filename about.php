@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tentang Saya - MonzaRadar</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f9f9f9;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(90deg, #2d0034, #5e1675); /* hitam keunguan */
+      color: white;
+      padding: 1rem 2rem;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover,
+    .nav-links .active {
+      color: #ffeaa7; /* kuning muda pastel */
+    }
+
+    .section {
+      padding: 2rem;
+    }
+
+    .about-section {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 80vh;
+    }
+
+    .about-container {
+      display: flex;
+      flex-wrap: wrap;
+      background: white;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      max-width: 900px;
+      gap: 2rem;
+    }
+
+    .profile-image img {
+      width: 250px;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 5px solid #5e1675;
+    }
+
+    .about-content {
+      flex: 1;
+    }
+
+    .about-content h2 {
+      margin-top: 0;
+      color: #2d3436;
+    }
+
+    .about-content p {
+      margin: 0.5rem 0;
+      line-height: 1.6;
+    }
+
+    .social-links {
+      margin-top: 1rem;
+    }
+
+    .social-links a {
+      font-size: 1.5rem;
+      margin-right: 1rem;
+      color: #2d3436;
+      transition: color 0.3s;
+    }
+
+    .social-links a:hover {
+      color: #5e1675;
+    }
+
+    .footer {
+      background: linear-gradient(90deg, #2d0034, #5e1675); /* hitam keunguan */
+      color: white;
+      text-align: center;
+      padding: 1rem 0;
+      margin-top: 3rem;
+    }
+
+    @media (max-width: 768px) {
+      .about-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .profile-image img {
+        width: 200px;
+        height: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">MonzaRadar</div>
+    <ul class="nav-links">
+      <li><a href="index.php">Home</a></li>
+      <li><a href="map2.php">Lihat Peta</a></li>
+      <li><a href="about.php" class="active">Tentang Saya</a></li>
+    </ul>
+  </nav>
+
+  <!-- Tentang Saya Section -->
+  <section class="section about-section">
+    <div class="about-container">
+      <div class="profile-image">
+        <img src="img/foto.jpeg" alt="Foto Profil Heykel">
+      </div>
+      <div class="about-content">
+        <h2>Tentang Saya</h2>
+        <p><strong>Nama:</strong> Heykel Prayogi Timanta G.S</p>
+        <p><strong>Kelas:</strong> Teknologi Rekayasa Perangkat Lunak - 6C</p>
+        <p>Saya adalah mahasiswa Politeknik Negeri Medan yang memiliki ketertarikan dalam bidang pemetaan digital, pengembangan web, dan solusi teknologi berbasis lokasi. Website ini dibuat sebagai upaya untuk membantu masyarakat Medan menemukan toko-toko Monza (thrift shop) secara lebih efisien dan informatif.</p>
+
+        <h3>Hubungi Saya</h3>
+        <div class="social-links">
+          <a href="https://www.linkedin.com/in/heykelprayogitimanta/" target="_blank"><i class="fab fa-linkedin"></i></a>
+          <a href="https://wa.me/6287822274814" target="_blank"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://instagram.com/hykl.gtg.s" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="mailto:emailkamu@example.com"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <p>&copy; <?php echo date("Y"); ?> MonzaRadar. Dibuat dengan ❤️ oleh Pengembang MonzaRadar.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

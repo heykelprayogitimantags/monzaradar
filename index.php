@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MonzaRadar - Pemetaan Toko Monza Medan</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary: #4f46e5;
+      --dark: rgb(41, 0, 84);
+      --light: #f9fafb;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--light);
+      scroll-behavior: smooth;
+    }
+
+    /* Navbar */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: var(--dark);
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      z-index: 999;
+      transition: top 0.3s ease-in-out;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 700;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #c4b5fd;
+    }
+
+    /* Hero Section */
+    .carousel-container {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .carousel-image {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .carousel-image.active {
+      opacity: 1;
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: white;
+      z-index: 2;
+      backdrop-filter: brightness(0.5);
+      padding: 1rem;
+    }
+
+    .hero-content h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero-content p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    .btn {
+      background-color: white;
+      color: var(--primary);
+      padding: 0.75rem 1.5rem;
+      font-weight: 600;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background-color 0.2s ease;
+    }
+
+    .btn:hover {
+      background-color: #e0e7ff;
+    }
+
+    /* Sections */
+    .section {
+      padding: 4rem 2rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .section.light {
+      background-color: var(--light);
+    }
+
+    .section h2 {
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
+      color: var(--dark);
+    }
+
+    .section p {
+      color: #4b5563;
+      line-height: 1.6;
+    }
+
+    .map-container iframe {
+      width: 100%;
+      height: 400px;
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .map-button {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background-color: var(--primary);
+      color: white;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+
+    .map-button:hover {
+      background-color: #4338ca;
+    }
+
+    /* Footer */
+    .footer {
+      background-color: rgb(41, 0, 84);
+      color: white;
+      text-align: center;
+      padding: 1.5rem 1rem;
+      font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+      .hero-content h1 {
+        font-size: 1.8rem;
+      }
+
+      .hero-content p {
+        font-size: 1rem;
+      }
+
+      .nav-links {
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav id="navbar" class="navbar">
+    <div class="logo">MonzaRadar</div>
+    <div class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#map">Peta</a>
+      <a href="#about">About Me </a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="carousel-container">
+    <img src="assets/foto1.jpg" class="carousel-image active" alt="Monza 1" />
+    <img src="assets/foto2.jpg" class="carousel-image" alt="Monza 2" />
+    <img src="assets/foto3.jpg" class="carousel-image" alt="Monza 3" />
+    <div class="hero-content">
+      <h1>Temukan Toko Monza Terdekat di Medan</h1>
+      <p>MonzaRadar membantu kamu menemukan toko thrift terbaik di Kota Medan</p>
+      <a href="#map" class="btn">🎯 Lihat Peta</a>
+    </div>
+  </section>
+
+  <!-- Map Section -->
+  <section id="map" class="section">
+    <h2>Peta Lokasi Toko Monza</h2>
+    <p>Berikut adalah peta interaktif dari lokasi toko Monza di Kota Medan.</p>
+    <div class="map-container" style="margin-top: 1.5rem;">
+      <iframe src="map.php" loading="lazy"></iframe>
+    </div>
+    <div style="text-align: center; margin-top: 2rem;">
+      <a href="map2.php" class="map-button">🔍 Lihat Selengkapnya</a>
+    </div>
+  </section>
+
+  <section id="about" class="section light" style="text-align: center;">
+    <h2>Tentang Saya</h2>
+    <p style="max-width: 600px; margin: 0 auto; color: #4b5563;">
+      Saya adalah pengembang MonzaRadar dengan minat di bidang pemetaan digital dan pengembangan web. Aplikasi ini dibuat untuk membantu masyarakat Medan menemukan toko thrift (Monza) dengan mudah.
+    </p>
+    <div style="margin-top: 1.5rem;">
+      <a href="about.php" style="
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background-color: #1d4ed8;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: background-color 0.2s ease;
+    " onmouseover="this.style.backgroundColor='#1e40af'" onmouseout="this.style.backgroundColor='#1d4ed8'">
+        📄 Click Me Sis
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; <?php echo date("Y"); ?> MonzaRadar. Dibuat dengan ❤️ oleh Pengembang MonzaRadar.</p>
+  </footer>
+
+  <!-- Script -->
+  <script>
+    // Navbar Scroll Hide
+    let lastScrollTop = 0;
+    const navbar = document.getElementById("navbar");
+
+    window.addEventListener("scroll", () => {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      navbar.style.top = scrollTop > lastScrollTop ? "-80px" : "0";
+      lastScrollTop = scrollTop;
+    });
+
+    // Carousel Logic
+    const slides = document.querySelectorAll(".carousel-image");
+    let currentSlide = 0;
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle("active", i === index);
+      });
+    }
+
+    setInterval(() => {
+      currentSlide = (currentSlide + 1) % slides.length;
+      showSlide(currentSlide);
+    }, 4000);
+  </script>
+</body>
+
+</html>

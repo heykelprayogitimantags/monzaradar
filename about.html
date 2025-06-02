@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Tentang Saya - MonzaRadar</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -17,9 +17,10 @@
 
     .navbar {
       display: flex;
+      flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
-      background: linear-gradient(90deg, #2d0034, #5e1675); /* hitam keunguan */
+      background: linear-gradient(90deg, #2d0034, #5e1675);
       color: white;
       padding: 1rem 2rem;
     }
@@ -33,6 +34,8 @@
       list-style: none;
       display: flex;
       gap: 1.5rem;
+      margin: 0;
+      padding: 0;
     }
 
     .nav-links a {
@@ -43,7 +46,7 @@
 
     .nav-links a:hover,
     .nav-links .active {
-      color: #ffeaa7; /* kuning muda pastel */
+      color: #ffeaa7;
     }
 
     .section {
@@ -55,6 +58,7 @@
       justify-content: center;
       align-items: center;
       min-height: 80vh;
+      padding: 2rem;
     }
 
     .about-container {
@@ -64,8 +68,11 @@
       padding: 2rem;
       border-radius: 15px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      max-width: 900px;
+      max-width: 1000px;
+      width: 100%;
       gap: 2rem;
+      justify-content: center;
+      align-items: center;
     }
 
     .profile-image img {
@@ -78,16 +85,26 @@
 
     .about-content {
       flex: 1;
+      min-width: 280px;
     }
 
     .about-content h2 {
       margin-top: 0;
       color: #2d3436;
+      font-size: 24px;
     }
 
     .about-content p {
       margin: 0.5rem 0;
       line-height: 1.6;
+      font-size: 15px;
+      color: #333;
+    }
+
+    .about-content h3 {
+      margin-top: 1.5rem;
+      color: #5e1675;
+      font-size: 18px;
     }
 
     .social-links {
@@ -106,23 +123,46 @@
     }
 
     .footer {
-      background: linear-gradient(90deg, #2d0034, #5e1675); /* hitam keunguan */
+      background: linear-gradient(90deg, #2d0034, #5e1675);
       color: white;
       text-align: center;
       padding: 1rem 0;
-      margin-top: 3rem;
     }
 
     @media (max-width: 768px) {
-      .about-container {
+      .navbar {
         flex-direction: column;
-        align-items: center;
+        gap: 0.5rem;
         text-align: center;
       }
 
+      .nav-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .about-container {
+        flex-direction: column;
+        text-align: center;
+        padding: 1.5rem;
+      }
+
       .profile-image img {
-        width: 200px;
-        height: 200px;
+        width: 180px;
+        height: 180px;
+      }
+
+      .about-content h2 {
+        font-size: 20px;
+      }
+
+      .about-content p {
+        font-size: 14px;
+      }
+
+      .social-links a {
+        font-size: 1.4rem;
       }
     }
   </style>
@@ -165,7 +205,7 @@
   <!-- Footer -->
   <footer class="footer">
     <div class="footer-content">
-      <p>&copy; <?php echo date("Y"); ?> MonzaRadar. Dibuat dengan ❤️ oleh Pengembang MonzaRadar.</p>
+      <p>&copy; 2025 MonzaRadar. Dibuat dengan ❤️ oleh Pengembang MonzaRadar.</p>
     </div>
   </footer>
 

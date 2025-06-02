@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -61,6 +60,35 @@
       color: #c4b5fd;
     }
 
+    .menu-toggle {
+      display: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        background-color: var(--dark);
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 100%;
+        text-align: center;
+        padding: 1rem 0;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+        color: white;
+      }
+    }
+
     /* Hero Section */
     .carousel-container {
       position: relative;
@@ -92,6 +120,7 @@
       z-index: 2;
       backdrop-filter: brightness(0.5);
       padding: 1rem;
+      max-width: 90%;
     }
 
     .hero-content h1 {
@@ -133,6 +162,7 @@
       font-size: 1.75rem;
       margin-bottom: 1rem;
       color: var(--dark);
+      text-align: center;
     }
 
     .section p {
@@ -174,16 +204,20 @@
 
     @media (max-width: 768px) {
       .hero-content h1 {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
       }
 
       .hero-content p {
         font-size: 1rem;
       }
 
-      .nav-links {
-        flex-direction: column;
-        gap: 0.75rem;
+      .btn {
+        font-size: 0.9rem;
+        padding: 0.5rem 1rem;
+      }
+
+      .section {
+        padding: 2rem 1rem;
       }
     }
   </style>
@@ -193,10 +227,11 @@
   <!-- Navbar -->
   <nav id="navbar" class="navbar">
     <div class="logo">MonzaRadar</div>
-    <div class="nav-links">
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <div class="nav-links" id="navLinks">
       <a href="#home">Home</a>
       <a href="#map">Peta</a>
-      <a href="#about">About Me </a>
+      <a href="#about">About Me</a>
     </div>
   </nav>
 
@@ -215,7 +250,7 @@
   <!-- Map Section -->
   <section id="map" class="section">
     <h2>Peta Lokasi Toko Monza</h2>
-    <p>Berikut adalah peta interaktif dari lokasi toko Monza di Kota Medan.</p>
+    <p style="text-align: center;">Berikut adalah peta interaktif dari lokasi toko Monza di Kota Medan.</p>
     <div class="map-container" style="margin-top: 1.5rem;">
       <iframe src="map.html" loading="lazy"></iframe>
     </div>
@@ -224,22 +259,23 @@
     </div>
   </section>
 
-  <section id="about" class="section light" style="text-align: center;">
+  <!-- About Section -->
+  <section id="about" class="section light">
     <h2>Tentang Saya</h2>
-    <p style="max-width: 600px; margin: 0 auto; color: #4b5563;">
+    <p style="max-width: 600px; margin: 0 auto; text-align: center; color: #4b5563;">
       Saya adalah pengembang MonzaRadar dengan minat di bidang pemetaan digital dan pengembangan web. Aplikasi ini dibuat untuk membantu masyarakat Medan menemukan toko thrift (Monza) dengan mudah.
     </p>
-    <div style="margin-top: 1.5rem;">
+    <div style="margin-top: 1.5rem; text-align: center;">
       <a href="about.html" style="
-      display: inline-block;
-      padding: 0.75rem 1.5rem;
-      background-color: #1d4ed8;
-      color: white;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: 600;
-      transition: background-color 0.2s ease;
-    " onmouseover="this.style.backgroundColor='#1e40af'" onmouseout="this.style.backgroundColor='#1d4ed8'">
+        display: inline-block;
+        padding: 0.75rem 1.5rem;
+        background-color: #1d4ed8;
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: 600;
+        transition: background-color 0.2s ease;
+      " onmouseover="this.style.backgroundColor='#1e40af'" onmouseout="this.style.backgroundColor='#1d4ed8'">
         📄 Click Me Sis
       </a>
     </div>
@@ -247,12 +283,15 @@
 
   <!-- Footer -->
   <footer class="footer">
-    <p>&copy; <?php echo date("Y"); ?> MonzaRadar. Dibuat dengan ❤️ oleh Pengembang MonzaRadar.</p>
+    <p>&copy; <span id="year"></span> MonzaRadar. Dibuat dengan ❤️ oleh Pengembang MonzaRadar.</p>
   </footer>
 
   <!-- Script -->
   <script>
-    // Navbar Scroll Hide
+    // Auto update year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Navbar hide on scroll down
     let lastScrollTop = 0;
     const navbar = document.getElementById("navbar");
 
@@ -276,7 +315,11 @@
       currentSlide = (currentSlide + 1) % slides.length;
       showSlide(currentSlide);
     }, 4000);
+
+    // Toggle menu mobile
+    function toggleMenu() {
+      document.getElementById("navLinks").classList.toggle("active");
+    }
   </script>
 </body>
-
 </html>
